@@ -66,22 +66,29 @@ database design, normalization, and advanced SQL development skills.
 
 3. Test with the quick-test queries at the bottom of each file.
 
--- -- View all active members
+```sql
+-- View all active members
+
 SELECT * FROM vw_ActiveMembers;
 
 -- View revenue summary
+
 SELECT * FROM vw_RevenueSummary;
 
 -- View trainer schedule
+
 SELECT * FROM vw_TrainerSchedule;
 
 -- View all bookings
+
 SELECT * FROM vw_BookingOverview;
 
 -- View audit log
+
 SELECT * FROM AuditLog ORDER BY CreatedAt DESC;
 
 -- Test: Add a new member
+
 EXEC sp_AddMember
     @FirstName   = 'Layla',
     @LastName    = 'Khalidi',
@@ -91,23 +98,27 @@ EXEC sp_AddMember
     @Email       = 'layla.k@email.com';
 
 -- Test: Register a membership for the new member (MemberID = 11)
+
 EXEC sp_RegisterMembership
     @MemberID  = 11,
     @PlanID    = 2,
     @StartDate = '2024-05-01';
 
 -- Test: Book a session for the new member
+
 EXEC sp_BookSession
     @MemberID  = 11,
     @SessionID = 8;
 
 -- Test: Record a payment
+
 EXEC sp_RecordPayment
     @MemberID      = 11,
     @MembershipID  = 11,
     @Amount        = 55.00,
     @PaymentMethod = 'Cash',
     @Notes         = 'Monthly Premium — May 2024';
+```
 
 
 ## 📁 Project Structure
